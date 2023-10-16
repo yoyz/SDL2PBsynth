@@ -1,0 +1,207 @@
+SOURCES_PICODEP :=    SDL_GUI.cpp              \
+		      AudioEngine.cpp          \
+		      AudioMixer.cpp           \
+		      Wave.cpp                 \
+		      Machine.cpp              \
+		      MonoMixer.cpp            \
+		      MachineHelper.cpp	       \
+		      PatternElement.cpp       \
+		      MachineCheck.cpp         \
+		      InputManager.cpp         \
+		      NoteFreq.cpp
+
+
+
+
+SOURCES_PICOLOOP := PatternPlayer.cpp \
+		${SOURCES_PICODEP}
+
+
+SOURCES_PICOSYNTHUI := Machine/Picosynth/PicosynthUserInterface.cpp
+SOURCES_PICOSYNTH :=  Machine/Picosynth/PicosynthADSR.cpp        \
+		      Machine/Picosynth/PicosynthVCO.cpp         \
+		      Machine/Picosynth/PicosynthMachine.cpp     \
+
+SOURCES_PICODRUMUI := Machine/Picodrum/PicodrumUserInterface.cpp 
+SOURCES_PICODRUM :=   Machine/Picodrum/PicodrumVCO.cpp           \
+		      Machine/Picodrum/PicodrumADSR.cpp          \
+		      Machine/Picodrum/PicodrumMachine.cpp       \
+
+SOURCES_DBOPLUI := Machine/Dbopl/DboplUserInterface.cpp 
+SOURCES_DBOPL := \
+		      Machine/Dbopl/dbopl.cpp                    \
+		      Machine/Dbopl/hiopl.cpp                    \
+		      Machine/Dbopl/DboplMachine.cpp             \
+
+SOURCES_PBSYNTHUI := Machine/PBSynth/PBSynthUserInterface.cpp 
+SOURCES_PBSYNTH := Machine/PBSynth/synthengine.cpp            \
+		      Machine/PBSynth/osc.cpp                    \
+		      Machine/PBSynth/lfo.cpp                    \
+		      Machine/PBSynth/filter.cpp                 \
+		      Machine/PBSynth/env.cpp                    \
+		      Machine/PBSynth/echo.cpp                   \
+		      Machine/PBSynth/osctab.cpp                 \
+		      Machine/PBSynth/lfotab.cpp                 \
+		      Machine/PBSynth/envtab.cpp                 \
+		      Machine/PBSynth/coeff.cpp                  \
+		      Machine/PBSynth/PBSynthMachine.cpp         \
+
+SOURCES_CURSYNTHUI := Machine/Cursynth/CursynthUserInterface.cpp 
+SOURCES_CURSYNTH := Machine/Cursynth/processor_router.cpp	 \
+		      Machine/Cursynth/processor.cpp		 \
+		      Machine/Cursynth/oscillator.cpp		 \
+		      Machine/Cursynth/operators.cpp		 \
+		      Machine/Cursynth/mono_panner.cpp		 \
+		      Machine/Cursynth/midi_lookup.cpp		 \
+		      Machine/Cursynth/linear_slope.cpp		 \
+		      Machine/Cursynth/filter.cpp		 \
+		      Machine/Cursynth/feedback.cpp		 \
+		      Machine/Cursynth/envelope.cpp		 \
+		      Machine/Cursynth/delay.cpp		 \
+		      Machine/Cursynth/cursynth_strings.cpp	 \
+		      Machine/Cursynth/cursynth_engine.cpp	 \
+		      Machine/Cursynth/wave.cpp			 \
+		      Machine/Cursynth/voice_handler.cpp	 \
+		      Machine/Cursynth/value.cpp		 \
+		      Machine/Cursynth/trigger_operators.cpp	 \
+		      Machine/Cursynth/step_generator.cpp	 \
+		      Machine/Cursynth/smooth_value.cpp		 \
+		      Machine/Cursynth/smooth_filter.cpp	 \
+		      Machine/Cursynth/send_receive.cpp		 \
+		      Machine/Cursynth/CursynthMachine.cpp	 \
+
+SOURCES_OPEN303UI := Machine/Open303/Open303UserInterface.cpp	 
+SOURCES_OPEN303 := Machine/Open303/rosic_Open303.cpp		 \
+		      Machine/Open303/Open303Machine.cpp	 \
+		      Machine/Open303/rosic_MidiNoteEvent.cpp	 \
+		      Machine/Open303/rosic_AcidSequencer.cpp	 \
+		      Machine/Open303/rosic_Complex.cpp		 \
+		      Machine/Open303/rosic_AcidPattern.cpp	 \
+		      Machine/Open303/rosic_BlendOscillator.cpp	 \
+		      Machine/Open303/rosic_OnePoleFilter.cpp	 \
+		      Machine/Open303/rosic_NumberManipulations.cpp	\
+		      Machine/Open303/rosic_FourierTransformerRadix2.cpp\
+		      Machine/Open303/rosic_DecayEnvelope.cpp	\
+		      Machine/Open303/rosic_MipMappedWaveTable.cpp	\
+		      Machine/Open303/rosic_BiquadFilter.cpp		\
+		      Machine/Open303/GlobalFunctions.cpp		\
+		      Machine/Open303/rosic_AnalogEnvelope.cpp		\
+		      Machine/Open303/rosic_TeeBeeFilter.cpp		\
+		      Machine/Open303/rosic_LeakyIntegrator.cpp		\
+		      Machine/Open303/rosic_FunctionTemplates.cpp	\
+		      Machine/Open303/rosic_EllipticQuarterBandFilter.cpp\
+		      Machine/Open303/rosic_RealFunctions.cpp		\
+
+SOURCES_TWYTCHUI :=   Machine/Twytch/TwytchsynthUserInterface.cpp	
+SOURCES_TWYTCH := Machine/Twytch/TwytchsynthMachine.cpp		\
+	Machine/Twytch/twytchhelm_alias.cpp \
+	Machine/Twytch/twytchhelm_arpeggiator.cpp \
+	Machine/Twytch/twytchhelm_biquad_filter.cpp \
+	Machine/Twytch/twytchhelm_bit_crush.cpp \
+	Machine/Twytch/twytchhelm_bypass_router.cpp \
+	Machine/Twytch/twytchhelm_dc_filter.cpp \
+	Machine/Twytch/twytchhelm_delay.cpp \
+	Machine/Twytch/twytchhelm_detune_lookup.cpp \
+	Machine/Twytch/twytchhelm_distortion.cpp \
+	Machine/Twytch/twytchhelm_envelope.cpp \
+	Machine/Twytch/twytchhelm_feedback.cpp \
+	Machine/Twytch/twytchhelm_fixed_point_oscillator.cpp \
+	Machine/Twytch/twytchhelm_fixed_point_wave.cpp \
+	Machine/Twytch/twytchhelm_formant_manager.cpp \
+	Machine/Twytch/twytchhelm_gate.cpp \
+	Machine/Twytch/twytchhelm_helm_common.cpp \
+	Machine/Twytch/twytchhelm_helm_engine.cpp \
+	Machine/Twytch/twytchhelm_helm_lfo.cpp \
+	Machine/Twytch/twytchhelm_helm_module.cpp \
+	Machine/Twytch/twytchhelm_helm_oscillators.cpp \
+	Machine/Twytch/twytchhelm_helm_voice_handler.cpp \
+	Machine/Twytch/twytchhelm_ladder_filter.cpp \
+	Machine/Twytch/twytchhelm_linear_slope.cpp \
+	Machine/Twytch/twytchhelm_magnitude_lookup.cpp \
+	Machine/Twytch/twytchhelm_memory.cpp \
+	Machine/Twytch/twytchhelm_midi_lookup.cpp \
+	Machine/Twytch/twytchhelm_mono_panner.cpp \
+	Machine/Twytch/twytchhelm_noise_oscillator.cpp \
+	Machine/Twytch/twytchhelm_operators.cpp \
+	Machine/Twytch/twytchhelm_oscillator.cpp \
+	Machine/Twytch/twytchhelm_peak_meter.cpp \
+	Machine/Twytch/twytchhelm_portamento_slope.cpp \
+	Machine/Twytch/twytchhelm_processor.cpp \
+	Machine/Twytch/twytchhelm_processor_router.cpp \
+	Machine/Twytch/twytchhelm_resonance_cancel.cpp \
+	Machine/Twytch/twytchhelm_resonance_lookup.cpp \
+	Machine/Twytch/twytchhelm_reverb.cpp \
+	Machine/Twytch/twytchhelm_reverb_all_pass.cpp \
+	Machine/Twytch/twytchhelm_reverb_comb.cpp \
+	Machine/Twytch/twytchhelm_sample_decay_lookup.cpp \
+	Machine/Twytch/twytchhelm_simple_delay.cpp \
+	Machine/Twytch/twytchhelm_smooth_filter.cpp \
+	Machine/Twytch/twytchhelm_smooth_value.cpp \
+	Machine/Twytch/twytchhelm_state_variable_filter.cpp \
+	Machine/Twytch/twytchhelm_step_generator.cpp \
+	Machine/Twytch/twytchhelm_stutter.cpp \
+	Machine/Twytch/twytchhelm_trigger_operators.cpp \
+	Machine/Twytch/twytchhelm_trigger_random.cpp \
+	Machine/Twytch/twytchhelm_value.cpp \
+	Machine/Twytch/twytchhelm_value_switch.cpp \
+	Machine/Twytch/twytchhelm_voice_handler.cpp \
+
+SOURCES_MIDIOUTUI := Machine/MidiOutSystem/MidiOutUserInterface.cpp            
+SOURCES_MIDIOUT := Machine/MidiOutSystem/MidiOutMachine.cpp                  \
+
+
+SOURCES_MDADRUMUI :=  Machine/MDADrum/MDADrumUserInterface.cpp			
+
+SOURCES_MDADRUM := Machine/MDADrum/MDADrumMachine.cpp			\
+		      Machine/MDADrum/drumsynth_oop5.cpp			\
+		      Machine/MDADrum/profport.cpp				\
+
+
+SOURCES_SIDSYNTHUI :=    Machine/SIDSynth/SIDSynthUserInterface.cpp
+SOURCES_SIDSYNTH := Machine/SIDSynth/sid.cpp					\
+		      Machine/SIDSynth/wave.cpp					\
+		      Machine/SIDSynth/sidfilter.cpp				\
+		      Machine/SIDSynth/envelope.cpp				\
+		      Machine/SIDSynth/extfilt.cpp				\
+		      Machine/SIDSynth/pot.cpp					\
+		      Machine/SIDSynth/voice.cpp				\
+		      Machine/SIDSynth/wave8580__ST.cpp				\
+		      Machine/SIDSynth/wave8580_P_T.cpp				\
+		      Machine/SIDSynth/wave8580_PS_.cpp				\
+		      Machine/SIDSynth/wave8580_PST.cpp				\
+		      Machine/SIDSynth/wave6581__ST.cpp				\
+		      Machine/SIDSynth/wave6581_P_T.cpp				\
+		      Machine/SIDSynth/wave6581_PS_.cpp				\
+		      Machine/SIDSynth/wave6581_PST.cpp				\
+		      Machine/SIDSynth/SIDSynthMachine.cpp			\
+
+SOURCES_LGPTSAMPLERSYNTHUI := 	Machine/Lgptsampler/LgptsamplerUserInterface.cpp
+SOURCES_LGPTSAMPLERSYNTH := 	Machine/Lgptsampler/SampleInstrument.cpp	\
+				Machine/Lgptsampler/SyncMaster.cpp		\
+				Machine/Lgptsampler/SamplePool.cpp		\
+				Machine/Lgptsampler/SampleVariable.cpp		\
+				Machine/Lgptsampler/Observable.cpp		\
+				Machine/Lgptsampler/Variable.cpp		\
+				Machine/Lgptsampler/WatchedVariable.cpp		\
+				Machine/Lgptsampler/TablePlayback.cpp		\
+				Machine/Lgptsampler/VariableContainer.cpp	\
+				Machine/Lgptsampler/Filters.cpp			\
+				Machine/Lgptsampler/SRPUpdaters.cpp		\
+				Machine/Lgptsampler/Trace.cpp			\
+				Machine/Lgptsampler/Config.cpp			\
+				Machine/Lgptsampler/wildcard.cpp		\
+				Machine/Lgptsampler/Status.cpp			\
+				Machine/Lgptsampler/WavFile.cpp			\
+				Machine/Lgptsampler/Groove.cpp			\
+				Machine/Lgptsampler/Persistent.cpp		\
+				Machine/Lgptsampler/TimeService.cpp		\
+				Machine/Lgptsampler/ServiceRegistry.cpp		\
+				Machine/Lgptsampler/char.cpp			\
+				Machine/Lgptsampler/SubService.cpp		\
+				Machine/Lgptsampler/Result.cpp			\
+				Machine/Lgptsampler/DEBSystem.cpp		\
+				Machine/Lgptsampler/Logger.cpp			\
+				Machine/Lgptsampler/LgptsamplerMachine.cpp	\
+
+				#//Machine/Lgptsampler/FileSystem.cpp		\
+				#//Machine/Lgptsampler/UnixFileSystem.cpp		\
