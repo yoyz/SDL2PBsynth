@@ -20,7 +20,7 @@
 
 //#include "Oscillator.h"
 #include "AudioMixer.h"
-//#include "WaveFileWriter.h"
+#include "WaveFileWriter.h"
 
 #ifdef   __SDL_AUDIO__
 #include "AudioDriverSDL.h"
@@ -150,7 +150,7 @@ class AudioEngine
   Sint32       fwrite_byte_counter;
 
   char      *  dump_audio_env;
-  //  WaveFileWriter WFW;
+  WaveFileWriter WFW;
 
   int          midiClockMode;
 };
