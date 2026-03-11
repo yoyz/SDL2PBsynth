@@ -28,7 +28,8 @@ int   rtcallback(
 AudioEngine::AudioEngine() : 
 			     AD(),
 			     buffer_out_left(  new Sint16[INTERNAL_BUFFER_SIZE]),
-			     buffer_out_right( new Sint16[INTERNAL_BUFFER_SIZE])
+			     buffer_out_right( new Sint16[INTERNAL_BUFFER_SIZE]),
+			     WFW()
 
 			     //buffer_out( new Sint16[BUFFER_FRAME])
 {
@@ -41,7 +42,12 @@ AudioEngine::AudioEngine() :
   tick_left=0;
   tick_right=0;
 
-  //  FORMAT=RTAUDIO_SINT16;
+#ifdef __RTAUDIO__
+  FORMAT=RTAUDIO_SINT16;
+#endif
+#ifdef __SDL_AUDIO__
+  FORMAT=AUDIO_S16;
+#endif
   //bufferFrames = 512;          // Weird ?
   //bufferFrames = BUFFER_FRAME; // Weird ?
   bufferFrames = DEFAULTSAMPLES; // in the ifdef of platform RASPI3_ILI9486 PC_DESKTOP, PSP, etc.
@@ -62,14 +68,14 @@ AudioEngine::AudioEngine() :
     buffer_out_right[i]=0;
   for (i=0;i<INTERNAL_BUFFER_SIZE;i++)
     buffer_out_left[i]=0;
-  // if (dump_audio)
-  //   {
-  //     WFW.setName("audioout.wav");
-  //     WFW.setNbChannel(1);
-  //     WFW.setBitRate(DEFAULTBITRATE);
-  //     WFW.setFrequency(DEFAULTFREQ);
-  //     WFW.createEmptyWaveFile();
-  //   }
+  if (dump_audio)
+    {
+      WFW.setName("audioout.wav");
+      WFW.setNbChannel(1);
+      WFW.setBitRate(DEFAULTBITRATE);
+      WFW.setFrequency(DEFAULTFREQ);
+      WFW.createEmptyWaveFile();
+    }
 
   fwrite_byte_counter=0;
   //buffer_out=(Sint16*)malloc(sizeof(Sint16)*BUFFER_FRAME);
@@ -321,10 +327,10 @@ void AudioEngine::callback(void *unused, Uint8 *stream, int len)
     this->processBuffer(buffer_size);
 
 
-  // if (dump_audio)
-  //   {
-  //     WFW.fillBuffer(buffer_out_right,buffer_size);
-  //   }
+  if (dump_audio)
+    {
+      WFW.fillBuffer(buffer_out_right,buffer_size);
+    }
 
 
     
@@ -464,8 +470,8 @@ int AudioEngine::openAudio()
 
 int AudioEngine::closeDumpAudioFile()
 {
-  // if (dump_audio)
-  //   WFW.closeAndUpdate();
+  if (dump_audio)
+    WFW.closeAndUpdate();
   
  return 0;
 }
