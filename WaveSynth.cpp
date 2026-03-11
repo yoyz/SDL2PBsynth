@@ -69,6 +69,7 @@ int quit;
 
 
 int current_op=1;
+
 int current_machine=1;
 
 
@@ -103,7 +104,7 @@ void openaudio()
   int t;
   int i=0;
   AM=new AudioMixer();
-  AM->setAudioVolume(128);
+  AM->setAudioVolume(DEFAULT_VOLUME);
   AE.setAudioMixer(AM);
   AE.setupSequencerCallback(donothing);
   AE.setNbTickBeforeStepChange(1000);
@@ -119,8 +120,17 @@ void openaudio()
       MM[t]=AE.getAudioMixer()->getMonoMixer(t);      
       MM[t]->init();
       MM[t]->setAmplitude(128);
+
       //MM[t]->setMachineType(0);
+#if !defined(__PBSYNTHONLY__)
+      MM[t]->setMachineType(0);
+#endif
+#if defined(__PBSYNTHONLY__)
+      MM[t]->setMachineType(3);
+#endif
+
       M[t]=MM[t]->getInput();
+      
       M[t]->init();
       //      FX[t] = MM[t]->getEffect();                             
       M[t]->reset();      
@@ -1071,7 +1081,15 @@ int main(int argc,char ** argv)
   file_buffer=(Sint16*)malloc(sizeof(short)*DEFAULTSAMPLES);
   vector_buffer=(Sint16*)malloc(sizeof(Sint16)*SCREEN_WIDTH);
   
+#if !defined(__PBSYNTHONLY__)
+  current_machine=0;
+#endif
+#if defined(__PBSYNTHONLY__)
+  current_machine=3;
+#endif
 
+
+  
   //PE.setNote(32);
 
   struct stat fileStat;
