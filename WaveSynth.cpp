@@ -107,6 +107,8 @@ void openaudio()
   AE.setAudioMixer(AM);
   AE.setupSequencerCallback(donothing);
   AE.setNbTickBeforeStepChange(1000);
+  printf("number of audio output : %d\n",AE.getNumberOfAudioOutputDevice());
+  printf("audio device name : %s\n",AE.getAudioOutputName(0));
   AE.setAudioOutput(0);
   AE.openAudio();
   //AE.getAudioMixer().setAudioVolume(128);
