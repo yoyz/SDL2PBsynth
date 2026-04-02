@@ -854,13 +854,13 @@ void draw_screen()
   //SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));               
 
   screen=SG.screen;
-  
+  //printf("surface: w=%d h=%d\n", screen->w, screen->h);   
   SDL_FillRect(screen,NULL, 0x000000);
 
   for (int i = 0; i < SCREEN_WIDTH-1 ; i++)
     {
-      rect.x = i;
-      rect.w = 1;
+      rect.x = i * SCREEN_MULT;
+      rect.w = 1 * SCREEN_MULT;
 
       if (vector_buffer[i]>0)
 	{
@@ -909,8 +909,8 @@ if (screen==NULL)
 
   for (int i = 0; i < SCREEN_WIDTH-1 ; i++)
     {
-      rect.x = i;
-      rect.w = 1;
+      rect.x = i * SCREEN_MULT;
+      rect.w = 1 * SCREEN_MULT;
 
       if (vector_buffer[i]>0)
 	{
